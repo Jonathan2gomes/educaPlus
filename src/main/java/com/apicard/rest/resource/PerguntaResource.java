@@ -12,6 +12,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class PerguntaResource {
             @APIResponse(responseCode = "200", description = "Lista de perguntas cadastradas",
                     content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = Pergunta.class)))
     })
-    public PerguntaDTO pergunta(@HeaderParam("categoria")String categoria) {
+    public PerguntaDTO pergunta(@QueryParam("categoria") String categoria) {
         try {
             return PerguntaService.gerarPergunta(categoria);
         } catch (Exception e) {
